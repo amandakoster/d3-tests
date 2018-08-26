@@ -15,11 +15,7 @@ var circles = svg.selectAll("circle")
 
 circles.enter()
     .append("circle")
-        .attr("cx", function(d, i){
-            return (i * 50) + 25;
-        })
-        .attr("cy", 25)
-        .attr("r", function(d){
-            return d;
-        })
-        .attr("fill", "red");
+        .attr("cx", (d, i) => (i * 100) + 25) //stagger distance from left
+        .attr("cy", 100) //distance from top
+        .attr("r", (d) => d) //radius
+        .attr("fill", "purple");
