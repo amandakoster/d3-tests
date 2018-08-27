@@ -17,7 +17,7 @@ d3.json("data/buildings.json").then(function (data) {
     });
 
     var y = d3.scaleLinear()
-        .domain([0, 828]) //largest value in data: height
+        .domain([0, 828]) //raw range: height values
         .range([0, 400]); //svg range
 
     var rects = svg.selectAll("rect")
