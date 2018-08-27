@@ -11,7 +11,7 @@ var svg = d3.select("#chart-area")
     .attr("height", "400");
 
 d3.json("data/buildings.json").then(function(data){
-    console.log(data);
+    console.log(data, "#### 3.06 ######");
 
     data.forEach(function(d) {
         d.height = +d.height;
@@ -22,7 +22,7 @@ d3.json("data/buildings.json").then(function(data){
             "Abraj Al-Bait Clock Tower", "Ping An Finance Centre", 
             "Lotte World Tower", "One World Trade Center",
             "Guangzhou CTF Finance Center"])
-        .range([0, 400])
+        .range([0, 300])
         .paddingInner(0.3)
         .paddingOuter(0.3);
 
@@ -34,7 +34,7 @@ d3.json("data/buildings.json").then(function(data){
             .data(data)
         .enter()
             .append("rect")
-            .attr("y", 0)
+            .attr("y", 10)
             .attr("x", function(d){
                 return x(d.name);
             })
