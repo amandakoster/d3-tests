@@ -22,5 +22,9 @@ d3.json("data/buildings.json").then(data => {
     .attr("x", (d, i) => i * 60)
     .attr("width", 40)
     .attr("height", d => d.height)
-    .attr("fill", d => "pink")
+    .attr("fill", d => {
+      if (d.name === "Shanghai Tower")
+        return "pink"
+      else return "red"
+    });
 });
