@@ -3,17 +3,18 @@
 *    Mastering Data Visualization with D3.js
 *    3.7 - D3 min, max, and extent
 */
-var margin = { left: 100, right: 10, top: 10, bottom: 100};
+var margin = { left: 100, right: 10, top: 10, bottom: 150};
 
 var width = 600 - margin.left - margin.right;
   height = 400 - margin.top - margin.bottom;
 
-var g = d3.select("#chart-area")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-        .attr("transform", "translate(" + margin.left + ", " +        margin.top + ")")
+  var g = d3.select("#chart-area")
+  .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+      .attr("transform", "translate(" + margin.left 
+          + ", " + margin.top + ")");
 
 d3.json("data/buildings.json").then(function(data){
     console.log(data);
@@ -34,23 +35,28 @@ d3.json("data/buildings.json").then(function(data){
 
     var xAxisCall = d3.axisBottom(x);
     g.append("g")
-      .attr("class", "translate(0, " + height + ")")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0, " + height + ")")
+        .call(xAxisCall)
+        .selectAll("text")
+          .attr("y", "10")
+          .attr("x", "-5")
+          .attr("text-anchor", "end")
+          .attr("transform", "rotate(-40)")
 
-    var yAxisCall = d3.axisLeft(y);
-    g.append("class", "y-axis")
+    var yAxisCall = d3.axisLeft(y)
+    g.append("g")
+      .attr("class", "y-axis")
+      .call(yAxisCall);
 
     var rects = g.selectAll("rect")
         .data(data)
         .enter()
         .append("rect")
         .attr("y", 20)
-        .attr("x", function(d){
-            return x(d.name);
-        })
+        .attr("x", function(d){ return x(d.name); })
         .attr("width", x.bandwidth)
-        .attr("height", function(d){
-            return y(d.height);
-        })
+        .attr("height", function(d){  return y(d.height); })
         .attr("fill", "pink");
 
 });
