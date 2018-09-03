@@ -47,6 +47,6 @@ d3.json("data/buildings.json").then(function(data){
             .attr("x", function(d){ return x(d.name); })
             .attr("width", x.bandwidth)
             .attr("height", function(d){ return y(d.height); })
-            .attr("fill", "grey");
+            .attr("fill", "pink");
 
 })

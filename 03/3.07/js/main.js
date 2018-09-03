@@ -17,24 +17,20 @@ d3.json("data/buildings.json").then(function(data){
     });
 
     var x = d3.scaleBand()
-        .domain(data.map(function(d){
-            return d.name;
-        }))
+        .domain(data.map((d)=> d.name))
         .range([0, 400])
         .paddingInner(0.3)
         .paddingOuter(0.3);
 
     var y = d3.scaleLinear()
-        .domain([0, d3.max(data, function(d){
-            return d.height;
-        })])
+        .domain([0, d3.max(data, (d) => d.height)])
         .range([0, 400]);
 
     var rects = svg.selectAll("rect")
         .data(data)
         .enter()
         .append("rect")
-        .attr("y", 0)
+        .attr("y", 20)
         .attr("x", function(d){
             return x(d.name);
         })
@@ -42,6 +38,6 @@ d3.json("data/buildings.json").then(function(data){
         .attr("height", function(d){
             return y(d.height);
         })
-        .attr("fill", "grey");
+        .attr("fill", "pink");
 
 });

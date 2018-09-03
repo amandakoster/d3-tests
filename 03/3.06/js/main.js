@@ -16,6 +16,12 @@ d3.json("data/buildings.json").then(function(data){
         d.height = +d.height;
     });
 
+    var x = d3.scaleBand()
+        .domain(data.map(d => d.name))
+        .range([0, 400])
+        .paddingInner(0.3)
+        .paddingOuter(0.3);
+        
     var y = d3.scaleLinear()
     .domain([
         d3.min(data, (data, d => d.value)),
@@ -27,11 +33,6 @@ d3.json("data/buildings.json").then(function(data){
     .domain([d3.extent(data, d => d.value)])
     .range([0, 400])
 
-    var x = d3.scaleBand()
-        .domain(data.map(d => d.grade))
-        .range([0, 400])
-        .paddingInner(0.3)
-        .paddingOuter(0.3);
 
     var rects = svg.selectAll("rect")
             .data(data)
