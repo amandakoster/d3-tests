@@ -42,7 +42,7 @@ d3.json("data/buildings.json").then(function(data){
           .attr("y", "10")
           .attr("x", "-5")
           .attr("text-anchor", "end")
-          .attr("transform", "rotate(-40)")
+          .attr("transform", "rotate(-40)");
 
     var yAxisCall = d3.axisLeft(y)
     g.append("g")
