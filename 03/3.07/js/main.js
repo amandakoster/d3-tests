@@ -82,12 +82,8 @@ g.append("g")
   rects.enter()
     .append("rect")
     .attr("y", 0)
-    .attr("x", function(d) {
-      return x(d.name);
-    })
+    .attr("x", (d) => x(d.name))
     .attr("width", x.bandwidth)
-    .attr("height", function(d) {
-      return y(d.height);
-    })
+    .attr("height", (d) => y(d.height))
     .attr("fill", "pink");
 });
