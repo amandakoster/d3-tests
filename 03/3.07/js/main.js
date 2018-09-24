@@ -21,8 +21,8 @@ var g = d3
 // X Label
 g.append("text")
   .attr("class", "x axis-label")
-  .attr("x", width / 2)
-  .attr("y", height + 140)
+  .attr("x", width / 2) //why /2?
+  .attr("y", height + 140) //why 140?
   .attr("font-size", "20px")
   .attr("text-anchor", "middle")
   .text("The word's tallest buildings");
@@ -52,6 +52,7 @@ d3.json("data/buildings.json").then(function(data) {
     .range([0, width])
     .paddingInner(0.3)
     .paddingOuter(0.3);
+    console.log(data, 'data2')
 
   var y = d3
     .scaleLinear()
@@ -71,8 +72,7 @@ d3.json("data/buildings.json").then(function(data) {
       .attr("transform", "rotate(-40)");
 
   //Ticks
-  var yAxisCall = d3
-    .axisLeft(y)
+  var yAxisCall = d3.axisLeft(y)
     // 3 ticks
     .ticks(3)
     //ticks have an 'm' for meters
